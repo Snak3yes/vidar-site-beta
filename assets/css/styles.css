@@ -162,8 +162,8 @@ nav ul li a.ativo::after {
   font-weight: 600;
   background-image: url("../images/Manoelb.jpg");
   background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
+  background-position: center;
+  background-attachment: scroll;
   background-repeat: no-repeat;
 }
 
@@ -672,6 +672,14 @@ footer {
 /* =========================================================
    RESPONSIVIDADE
 ========================================================= */
+
+/* Só aplica o efeito fixo em telas grandes */
+@media (min-width: 1024px) {
+  .secao-manoel {
+    background-attachment: fixed;
+  }
+}
+
 @media (max-width: 900px) {
   .carrossel-conteudo h2 {
     font-size: 1.5rem;

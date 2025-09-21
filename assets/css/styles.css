@@ -199,12 +199,13 @@ nav ul li a.ativo::after {
   position: absolute;
   bottom: 8px;
   right: 12px;
-  font-size: 0.75rem;
+  font-size: clamp(0.6rem, 1vw, 0.8rem); /* adapta ao tamanho da tela */
   color: #f0f0f0;
   background: rgba(0, 0, 0, 0.4); /* fundo para contraste */
   padding: 2px 6px;
   border-radius: 4px;
   z-index: 2; /* acima do overlay escuro */
+  white-space: nowrap; /* evita quebrar em duas linhas em telas pequenas */
 }
 
 /* =========================================================

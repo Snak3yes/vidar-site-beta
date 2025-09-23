@@ -88,6 +88,14 @@ header {
   vertical-align: middle;
 }
 
+.logo-icon-rodape {
+  font-size: clamp(0.8rem, 4vw, 4.0rem);
+  margin-right: 12px;
+  width: clamp(30px, 5vw, 50px);
+  height: clamp(30px, 5vw, 50px);
+  vertical-align: middle;
+}
+
 /* NAVEGAÇÃO */
 nav ul {
   display: flex;

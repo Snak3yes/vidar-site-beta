@@ -315,141 +315,120 @@ nav ul li a.ativo::after {
 /* =========================================================
    CARROSSEL
 ========================================================= */
-/* =========================================================
-   OPÇÃO 1 - CARROSSEL HERÓI FULLSCREEN
-========================================================= */
-
 .carrossel-container {
-  font-family: "Candara", "Calibri", sans-serif;
   position: relative;
-  width: 100vw;
-  height: 90vh;
-  margin-left: calc(-50vw + 50%);
+  width: 100%;
+  height: 80vh;
   overflow: hidden;
 }
 
-.carrossel-item {
-  min-width: 100vw;
-  height: 90vh;
-  position: relative;
+.carrossel {
   display: flex;
-  align-items: center;
-}
-
-.carrossel-item img {
-  width: 100%;
+  transition: transform 0.6s ease-in-out;
   height: 100%;
-  object-fit: cover;
 }
 
-.carrossel-conteudo {
-  position: absolute;
-  right: 10%;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40%;
-  min-width: 400px;
-  background: rgba(47, 82, 51, 0.9);
-  padding: 3rem;
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-  color: white;
-}
-
-.carrossel-conteudo h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.carrossel-conteudo p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  margin-bottom: 2rem;
-}
-
-/*-----------------------------------
- Botões
------------------------------------*/
-.carrossel-btn {
-  display: inline-block;
-  background: var(--destaque-1);
-  color: white;
-  padding: 15px 30px;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.carrossel-btn:hover {
-  background: transparent;
-  border-color: var(--destaque-1);
-  color: var(--destaque-1);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(201, 86, 64, 0.3);
-}
-
-/* Setas modernizadas */
-.carrossel-seta {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.9);
-  border: none;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  cursor: pointer;
+.carrossel-item {
+  min-width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
-  color: var(--verde-floresta);
-  transition: all 0.3s ease;
-  z-index: 20;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
+  color: #fff;
 }
 
-.carrossel-seta:hover {
-  background: var(--verde-floresta);
+.conteudo-slide1 {
+  background: url("../images/Projetos/Evento25-09.jpg") center/cover no-repeat;
+  padding: 30px;
+  border-radius: 12px;
+  width: 35%;
+  height: 60%;
+}
+
+.titulo {
+  text-align: center;
+  vertical-align: top;
+}
+
+.descricao {
+  vertical-align: bottom;
+}
+
+.conteudo-slide2 {
+  background: url("../images/Projetos/2evento25-09.jpg") center/cover no-repeat;
+  padding: 30px;
+  border-radius: 12px;
+  width: 35%;
+  height: 60%;
+}
+
+.conteudo-slide3 {
+  background: url("../images/Projetos/1evento25-09.jpg") center/cover no-repeat;
+  padding: 30px;
+  border-radius: 12px;
+  width: 35%;
+  height: 60%;
+}
+
+.btn-slide {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #ff6600;
   color: white;
-  transform: translateY(-50%) scale(1.1);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.3s;
+  vertical-align: bottom;
 }
 
-@media (max-width: 768px) {
-  .carrossel-container {
-    height: 70vh;
-  }
-
-  .carrossel-item {
-    height: 70vh;
-  }
-
-  .carrossel-conteudo {
-    padding: 2rem 1rem;
-    text-align: center;
-  }
-
-  .carrossel-conteudo h2 {
-    font-size: 2rem;
-  }
-
-  .carrossel-conteudo p {
-    font-size: 1.1rem;
-  }
-
-  /* Opção 2 específica para mobile */
-  .carrossel-conteudo {
-    width: 90%;
-    min-width: auto;
-    right: 5%;
-    left: 5%;
-  }
+.btn-slide:hover {
+  background: #e65c00;
 }
+
+.carrossel-seta,
+.carrossel-indicadores {
+  position: absolute;
+  color: white;
+}
+
+.carrossel-seta {
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.carrossel-seta.anterior {
+  left: 10px;
+}
+.carrossel-seta.proximo {
+  right: 10px;
+}
+
+.carrossel-indicadores {
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.carrossel-indicador {
+  width: 12px;
+  height: 12px;
+  background: #bbb;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.carrossel-indicador.ativo {
+  background: #fff;
+}
+
 /* =========================================================
    CONTEÚDO PRINCIPAL
 ========================================================= */

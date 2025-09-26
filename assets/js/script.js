@@ -214,3 +214,24 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", ajustarAlturaCarrossel);
   ajustarAlturaCarrossel();
 });
+
+// Animação da Timeline
+function animateTimeline() {
+  const timelineItems = document.querySelectorAll(".timeline-item");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  timelineItems.forEach((item) => observer.observe(item));
+}
+
+// Inicializar quando a página carregar
+document.addEventListener("DOMContentLoaded", animateTimeline);

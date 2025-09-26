@@ -89,7 +89,7 @@ header {
 }
 
 .logo-icon-rodape {
-  font-size: clamp(0.8rem, 4vw, 4.0rem);
+  font-size: clamp(0.8rem, 4vw, 4rem);
   margin-right: 12px;
   width: clamp(30px, 5vw, 50px);
   height: clamp(30px, 5vw, 50px);
@@ -171,8 +171,8 @@ nav ul li a.ativo::after {
   background-image: url("../images/Manoelb.jpg");
   background-size: cover;
   background-position: center;
-  background-attachment: scroll;
   background-repeat: no-repeat;
+  background-attachment: scroll;
 }
 
 .frase-destaque.imagem::after {
@@ -187,10 +187,10 @@ nav ul li a.ativo::after {
 
 .conteudo-frase {
   font-family: "Candara", "Calibri", sans-serif;
-  font-weight: 300; /* 'Light' equivalente */
+  font-weight: 300;
   position: relative;
   z-index: 1;
-  margin-left: 9%; /* Ajuste aqui o quanto quer deslocar */
+  margin-left: 9%;
 }
 
 .conteudo-frase p {
@@ -207,103 +207,211 @@ nav ul li a.ativo::after {
   position: absolute;
   bottom: 8px;
   right: 12px;
-  font-size: clamp(0.6rem, 1vw, 0.8rem); /* adapta ao tamanho da tela */
+  font-size: clamp(0.6rem, 1vw, 0.8rem);
   color: #f0f0f0;
-  background: rgba(0, 0, 0, 0.4); /* fundo para contraste */
+  background: rgba(0, 0, 0, 0.4);
   padding: 2px 6px;
   border-radius: 4px;
-  z-index: 2; /* acima do overlay escuro */
-  white-space: nowrap; /* evita quebrar em duas linhas em telas pequenas */
+  z-index: 2;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   MOBILE - MOSTRAR FOTO INTEIRA SEM CORTAR
+========================================================= */
+
+@media (max-width: 768px) {
+  .frase-destaque.imagem {
+    background-size: contain; /* ⭐ MOSTRA IMAGEM INTEIRA */
+    background-color: #0a1929; /* Cor de fundo para áreas vazias */
+    background-position: center center;
+    height: 60vh; /* Altura ajustada para foto horizontal */
+    justify-content: center; /* Centraliza o texto */
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .conteudo-frase {
+    margin-left: 0; /* Remove margem lateral */
+    background: rgba(0, 0, 0, 0.7); /* Fundo escuro para contraste */
+    padding: 1.5rem;
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 95%; /* Limita largura máxima */
+    margin: 0 auto; /* Centraliza horizontalmente */
+  }
+
+  .conteudo-frase p {
+    font-size: 1.1rem; /* Tamanho fixo legível */
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
+  }
+
+  .conteudo-frase .autor {
+    font-size: 1rem;
+    font-style: italic;
+  }
+
+  /* Ajuste do crédito da foto para mobile */
+  .credito-foto {
+    bottom: 5px;
+    right: 8px;
+    font-size: 0.7rem;
+    padding: 2px 5px;
+    background: rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* =========================================================
+   MOBILE MUITO PEQUENO (Smartphones menores)
+========================================================= */
+
+@media (max-width: 480px) {
+  .frase-destaque.imagem {
+    height: 50vh; /* Altura menor em telas pequenas */
+    padding: 1rem;
+  }
+
+  .conteudo-frase {
+    padding: 1rem;
+    max-width: 100%; /* Ocupa toda largura disponível */
+  }
+
+  .conteudo-frase p {
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .conteudo-frase .autor {
+    font-size: 0.9rem;
+  }
+
+  .credito-foto {
+    font-size: 0.6rem;
+    bottom: 3px;
+    right: 5px;
+  }
+}
+
+/* =========================================================
+   TABLET (768px - 1024px)
+========================================================= */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .frase-destaque.imagem {
+    height: 60vh;
+    justify-content: center;
+  }
+
+  .conteudo-frase {
+    margin-left: 5%;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 10px;
+  }
 }
 
 /* =========================================================
    CARROSSEL
 ========================================================= */
-.carrossel-container {
-  position: relative;
-  max-width: 1200px;
-  margin: 2rem auto 4rem auto;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
+/* =========================================================
+   OPÇÃO 1 - CARROSSEL HERÓI FULLSCREEN
+========================================================= */
 
-.carrossel {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
+.carrossel-container {
+  font-family: "Candara", "Calibri", sans-serif;
+  position: relative;
+  width: 100vw;
+  height: 90vh;
+  margin-left: calc(-50vw + 50%);
+  overflow: hidden;
 }
 
 .carrossel-item {
-  min-width: 100%;
+  min-width: 100vw;
+  height: 90vh;
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .carrossel-item img {
   width: 100%;
-  height: 500px; /* Imagem mais alta */
+  height: 100%;
   object-fit: cover;
-  display: block;
 }
 
 .carrossel-conteudo {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent, rgba(47, 82, 51, 0.98));
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40%;
+  min-width: 400px;
+  background: rgba(47, 82, 51, 0.9);
+  padding: 3rem;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
   color: white;
-  padding: 2rem;
-  backdrop-filter: blur(5px);
 }
 
 .carrossel-conteudo h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: var(--verde-claro);
 }
 
 .carrossel-conteudo p {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  max-width: 600px;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
 }
 
+/*-----------------------------------
+ Botões
+-----------------------------------*/
 .carrossel-btn {
   display: inline-block;
   background: var(--destaque-1);
   color: white;
-  padding: 12px 25px;
-  border-radius: 6px;
+  padding: 15px 30px;
+  border-radius: 50px;
   font-weight: 600;
+  font-size: 1.1rem;
   transition: all 0.3s ease;
   border: 2px solid transparent;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .carrossel-btn:hover {
   background: transparent;
   border-color: var(--destaque-1);
   color: var(--destaque-1);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(201, 86, 64, 0.3);
 }
 
-/* Setas de navegação */
+/* Setas modernizadas */
 .carrossel-seta {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.9);
   border: none;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: var(--verde-floresta);
   transition: all 0.3s ease;
-  z-index: 10;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 20;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
 }
 
 .carrossel-seta:hover {
@@ -312,45 +420,36 @@ nav ul li a.ativo::after {
   transform: translateY(-50%) scale(1.1);
 }
 
-.carrossel-seta.anterior {
-  left: 20px;
-}
+@media (max-width: 768px) {
+  .carrossel-container {
+    height: 70vh;
+  }
 
-.carrossel-seta.proximo {
-  right: 20px;
-}
+  .carrossel-item {
+    height: 70vh;
+  }
 
-/* Indicadores do carrossel */
-.carrossel-indicadores {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  z-index: 10;
-}
+  .carrossel-conteudo {
+    padding: 2rem 1rem;
+    text-align: center;
+  }
 
-.carrossel-indicador {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  border: 2px solid transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
+  .carrossel-conteudo h2 {
+    font-size: 2rem;
+  }
 
-.carrossel-indicador.ativo {
-  background: var(--destaque-1);
-  border-color: white;
-  transform: scale(1.2);
-}
+  .carrossel-conteudo p {
+    font-size: 1.1rem;
+  }
 
-.carrossel-indicador:hover {
-  background: var(--destaque-3);
+  /* Opção 2 específica para mobile */
+  .carrossel-conteudo {
+    width: 90%;
+    min-width: auto;
+    right: 5%;
+    left: 5%;
+  }
 }
-
 /* =========================================================
    CONTEÚDO PRINCIPAL
 ========================================================= */
@@ -598,96 +697,357 @@ footer {
    - Cards menores
    - Imagens ajustadas
 ========================================================= */
+/* =========================================================
+   SEÇÃO FUNDADORAS - EFEITO ESTRELAS ELEGANTE
+========================================================= */
+
 #fundadoras {
-  background: linear-gradient(135deg, var(--bege-areia) 0%, #f0e9dd 100%);
+  background: linear-gradient(135deg, #0a1929 0%, #24293a 100%);
   padding: 4rem 2rem;
   margin: 4rem 0;
-  border-radius: 15px;
-}
-
-#fundadoras .titulo-secao {
-  color: var(--verde-floresta);
-  border-bottom: 3px solid var(--destaque-1);
-  padding-bottom: 1rem;
-  margin-bottom: 3rem;
-}
-
-/* Cards menores */
-#fundadoras .grid-noticias {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(250px, 1fr)
-  ); /* cards menores */
-  gap: 1.5rem;
-}
-
-#fundadoras .card-noticia {
-  border: 2px solid var(--marrom-terra);
-  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
 }
 
-/* Linha de destaque no hover */
-#fundadoras .card-noticia::before {
+/* Céu estrelado de fundo */
+#fundadoras::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
+  bottom: 0;
+  background-image: radial-gradient(
+      circle at 20% 30%,
+      rgba(255, 255, 255, 0.8) 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 80% 60%,
+      rgba(255, 255, 255, 0.6) 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 40% 20%,
+      rgba(255, 255, 255, 0.9) 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 60% 80%,
+      rgba(255, 255, 255, 0.7) 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 30% 70%,
+      rgba(255, 255, 255, 0.5) 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 70% 40%,
+      rgba(255, 255, 255, 0.8) 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 10% 90%,
+      rgba(255, 255, 255, 0.6) 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(255, 255, 255, 0.7) 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 255, 255, 0.9) 1px,
+      transparent 2px
+    );
+  background-size: 200px 200px;
+  animation: starsTwinkle 8s ease-in-out infinite;
+}
+
+/* Camada adicional de estrelas menores */
+#fundadoras::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(
+      circle at 15% 25%,
+      rgba(255, 255, 255, 0.4) 0.5px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 85% 65%,
+      rgba(255, 255, 255, 0.3) 0.5px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 45% 15%,
+      rgba(255, 255, 255, 0.5) 0.5px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 65% 85%,
+      rgba(255, 255, 255, 0.4) 0.5px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 25% 75%,
+      rgba(255, 255, 255, 0.3) 0.5px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 75% 35%,
+      rgba(255, 255, 255, 0.4) 0.5px,
+      transparent 1px
+    );
+  background-size: 150px 150px;
+  animation: starsFloat 12s ease-in-out infinite;
+}
+
+/* =========================================================
+   ANIMAÇÕES DAS ESTRELAS
+========================================================= */
+
+/* Animação principal - cintilação */
+@keyframes starsTwinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  25% {
+    opacity: 0.6;
+    transform: scale(1.02);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+  75% {
+    opacity: 0.5;
+    transform: scale(1.02);
+  }
+}
+
+/* Animação de flutuação suave */
+@keyframes starsFloat {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+    background-position: 0% 0%;
+  }
+  50% {
+    transform: translateY(-10px) rotate(180deg);
+    background-position: 50% 50%;
+  }
+  100% {
+    transform: translateY(0px) rotate(360deg);
+    background-position: 100% 100%;
+  }
+}
+
+/* =========================================================
+   ELEMENTOS DE CONTEÚDO
+========================================================= */
+
+/* Título com brilho suave */
+#fundadoras .titulo-secao {
+  color: #ffd700;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.4), 0 0 30px rgba(255, 215, 0, 0.2);
+  border-bottom: 2px solid #ffd700;
+  position: relative;
+  z-index: 2;
+  padding-bottom: 1rem;
+  margin-bottom: 3rem;
+  font-size: 2.2rem;
+}
+
+/* Grid dos cards */
+#fundadoras .grid-noticias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Cards com efeito de vidro elegante */
+#fundadoras .card-noticia {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1), 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+#fundadoras .card-noticia img {
+  width: 180px; /* Largura fixa */
+  height: 180px; /* Altura igual à largura (quadrado) */
+  object-fit: cover; /* Cobre o espaço sem distorcer */
+  object-position: center; /* Foca no centro do rosto */
+  border-radius: 50%; /* Formato circular */
+  margin: 0 auto 1rem auto; /* Centraliza horizontalmente */
+  display: block; /* Necessário para margin auto */
+  border: 4px solid rgba(255, 255, 255, 0.8); /* Moldura branca suave */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
+
+  /* Melhoria de qualidade */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  filter: brightness(1.05) saturate(1.1); /* Ajuste sutil de cor */
+}
+/* Efeito de brilho atrás da foto */
+.foto-fundadora::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#fundadoras .card-noticia:hover .foto-fundadora::before {
+  opacity: 0.3;
+}
+
+/* Efeito hover nas fotos */
+#fundadoras .card-noticia:hover img {
+  transform: scale(1.05); /* Leve zoom no hover */
+  border-color: rgba(255, 215, 0, 0.6); /* Moldura dourada */
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* Efeito sutil de brilho ao redor dos cards */
+#fundadoras .card-noticia::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
   background: linear-gradient(
-    90deg,
-    var(--destaque-1),
-    var(--destaque-2),
-    var(--destaque-3)
+    45deg,
+    rgba(255, 215, 0, 0.1),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 215, 0, 0.1)
   );
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
+  border-radius: 14px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 #fundadoras .card-noticia:hover::before {
-  transform: scaleX(1);
+  opacity: 1;
 }
 
 #fundadoras .card-noticia:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15), 0 0 30px rgba(255, 255, 255, 0.2);
 }
 
-/* Imagem ajustada - não corta rosto */
-#fundadoras .card-noticia img {
-  width: 100%;
-  height: 180px; /* menor altura */
-  object-fit: contain; /* preserva proporção */
-  background: #f5f0e6; /* cor de fundo caso a imagem não preencha */
+/* Texto dentro dos cards */
+#fundadoras .card-noticia h3 {
+  color: #2f5233;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
 }
 
+#fundadoras .card-noticia .area {
+  color: #7e6651;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+  font-size: 0.9rem;
+}
+
+#fundadoras .card-noticia .bio {
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+}
+
+/* Links de contato */
 #fundadoras .leia-mais {
-  background: var(--verde-floresta);
+  background: linear-gradient(45deg, #2f5233, #3d6b41);
   color: white;
-  padding: 10px 20px;
+  padding: 8px 16px;
   border-radius: 6px;
-  font-weight: 600;
+  font-weight: 500;
   transition: all 0.3s ease;
   display: inline-block;
-  margin-top: 1rem;
-}
-
-#fundadoras .card-noticia h3::before {
-  content: "⭐";
-  font-size: 1.2em;
-}
-
-#fundadoras .card-noticia:hover .conteudo {
-  background: linear-gradient(135deg, #ffffff 0%, #f8f6f0 100%);
 }
 
 #fundadoras .leia-mais:hover {
-  background: var(--destaque-1);
+  background: linear-gradient(45deg, #c95640, #d46a55);
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(201, 86, 64, 0.3);
+  box-shadow: 0 4px 12px rgba(201, 86, 64, 0.3);
+}
+
+/* =========================================================
+   RESPONSIVIDADE
+========================================================= */
+/* =========================================================
+   RESPONSIVIDADE PARA AS FOTOS
+========================================================= */
+
+@media (max-width: 768px) {
+  #fundadoras .card-noticia img {
+    width: 140px;
+    height: 140px;
+    border-width: 3px;
+  }
+
+  .foto-fundadora {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  #fundadoras .card-noticia img {
+    width: 120px;
+    height: 120px;
+    border-width: 2px;
+  }
+
+  .foto-fundadora {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  #fundadoras {
+    padding: 2rem 1rem;
+    margin: 2rem 0;
+  }
+
+  #fundadoras .grid-noticias {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  #fundadoras .titulo-secao {
+    font-size: 1.8rem;
+  }
+
+  #fundadoras .card-noticia {
+    padding: 1rem;
+  }
 }
 
 /* =========================================================
@@ -1022,4 +1382,402 @@ footer {
     width: 28px;
     height: 28px;
   }
+}
+
+/* =========================================================
+   PÁGINA SOBRE - LAYOUT TIMELINE
+========================================================= */
+
+/* Hero Section da Página Sobre */
+.sobre-hero {
+  background: linear-gradient(135deg, var(--verde-floresta) 0%, #1a3c1f 100%);
+  color: white;
+  padding: 5rem 2rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  border-radius: 0 0 20px 20px;
+}
+
+.sobre-hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  font-weight: 300;
+}
+
+.sobre-subtitulo {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  font-style: italic;
+}
+
+.sobre-hero-content p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+/* Timeline Section */
+.timeline-section {
+  padding: 4rem 2rem;
+  background: var(--bege-areia);
+  margin: 2rem 0;
+  border-radius: 15px;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 4rem auto 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--verde-floresta);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.timeline-item:nth-child(odd) {
+  flex-direction: row;
+}
+
+.timeline-item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.timeline-year {
+  background: var(--verde-floresta);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 25px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  min-width: 120px;
+  text-align: center;
+  z-index: 2;
+  box-shadow: 0 4px 15px rgba(47, 82, 51, 0.3);
+}
+
+.timeline-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  width: 45%;
+  margin: 0 2rem;
+  position: relative;
+  border-left: 4px solid var(--destaque-1);
+}
+
+.timeline-content h3 {
+  color: var(--verde-floresta);
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.timeline-content p {
+  color: var(--cinza-pedra);
+  line-height: 1.6;
+}
+
+/* Linhas de Pesquisa */
+.linhas-pesquisa {
+  padding: 4rem 2rem;
+}
+
+.grid-linhas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 3rem auto 0;
+}
+
+.linha-card {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-top: 4px solid var(--destaque-1);
+}
+
+.linha-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.linha-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.linha-card h3 {
+  color: var(--verde-floresta);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.linha-card p {
+  color: var(--cinza-pedra);
+  line-height: 1.6;
+}
+
+/* Missão, Visão, Valores */
+.missao-visao {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  margin: 2rem 0;
+  border-radius: 15px;
+}
+
+.pilares-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 3rem auto 0;
+}
+
+.pilar-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.pilar-card h3 {
+  color: var(--verde-floresta);
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pilar-card p {
+  color: var(--cinza-pedra);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.pilar-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.pilar-card li {
+  padding: 0.5rem 0;
+  color: var(--cinza-pedra);
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.pilar-card li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--destaque-1);
+  font-weight: bold;
+}
+
+/* Parcerias */
+.parcerias-section {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.parcerias-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+  max-width: 800px;
+  margin: 3rem auto;
+}
+
+.parceiro-logo {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--verde-floresta);
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+  transition: transform 0.3s ease;
+}
+
+.parceiro-logo:hover {
+  transform: scale(1.05);
+}
+
+.parcerias-texto {
+  max-width: 600px;
+  margin: 2rem auto 0;
+  color: var(--cinza-pedra);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   RESPONSIVIDADE
+========================================================= */
+
+@media (max-width: 968px) {
+  .timeline::before {
+    left: 30px;
+  }
+
+  .timeline-item {
+    flex-direction: row !important;
+    justify-content: flex-start;
+    padding-left: 60px;
+  }
+
+  .timeline-year {
+    position: absolute;
+    left: 0;
+    min-width: 60px;
+    padding: 0.8rem 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .timeline-content {
+    width: 100%;
+    margin: 0;
+    margin-left: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sobre-hero {
+    padding: 3rem 1rem;
+  }
+
+  .sobre-hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .sobre-subtitulo {
+    font-size: 1.2rem;
+  }
+
+  .timeline-section,
+  .linhas-pesquisa,
+  .missao-visao,
+  .parcerias-section {
+    padding: 2rem 1rem;
+  }
+
+  .grid-linhas,
+  .pilares-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .parcerias-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .linha-card,
+  .pilar-card {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sobre-hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-item {
+    padding-left: 50px;
+  }
+
+  .timeline-year {
+    min-width: 40px;
+    padding: 0.6rem 0.3rem;
+    font-size: 1rem;
+  }
+
+  .timeline-content {
+    padding: 1.5rem;
+  }
+
+  .parcerias-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   ANIMAÇÕES SUAVES
+========================================================= */
+
+.sobre-hero,
+.timeline-section,
+.linhas-pesquisa,
+.missao-visao,
+.parcerias-section {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.timeline-section {
+  animation-delay: 0.2s;
+}
+.linhas-pesquisa {
+  animation-delay: 0.4s;
+}
+.missao-visao {
+  animation-delay: 0.6s;
+}
+.parcerias-section {
+  animation-delay: 0.8s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.timeline-item {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.6s ease;
+}
+
+.timeline-item:nth-child(even) {
+  transform: translateX(50px);
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateX(0);
 }

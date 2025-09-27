@@ -2,7 +2,7 @@
 
 **Status:** Desenvolvimento Inicial | 🚧 Em Construção
 
-Este é um repositório de teste para o site do grupo de pesquisa **Vidar em In-Tensões** da Universidade do Estado do Amazonas.
+Este é um repositório de teste para o site do grupo de estudos e pesquisa **Vidar em In-Tensões** da Universidade do Estado do Amazonas.
 
 ## 📋 Sobre esta versão
 
@@ -16,8 +16,8 @@ Este é um repositório de teste para o site do grupo de pesquisa **Vidar em In-
 - [x] Layout responsivo
 - [x] Navegação entre páginas
 - [x] Carrossel na homepage
-- [x] Seção de pesquisadores
-- [x] Formulário de newsletter
+- [x] Seção Pesquisadores
+- [x] Seção Sobre
 
 ## 📝 Próximas Etapas
 
@@ -28,7 +28,7 @@ Este é um repositório de teste para o site do grupo de pesquisa **Vidar em In-
 
 ## 👥 Desenvolvimento
 
-Desenvolvido por [Seu Nome] para o grupo Vidar em In-Tensões - UEA
+Desenvolvido por Felipe Robert para o grupo Vidar em In-Tensões - UEA
 
 ---
 

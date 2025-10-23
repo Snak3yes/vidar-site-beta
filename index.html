@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="./assets/css/styles.css" />
   </head>
   <body>
-    <!-- Cabeçalho com navegação -->
+    <!-- Cabeçalho com navegação e degradê integrado -->
     <header>
       <div class="header-container">
         <div class="logo">
@@ -54,60 +54,65 @@
       </div>
     </header>
 
-    <!-- Carrossel de Destaque -->
-    <section class="carrossel-container">
-      <div class="carrossel">
-        <div class="carrossel-item fundo1">
-          <div class="conteudo-slide1">
-            <h2 class="Titulo">Obra Infanto Juvenil</h2>
-            <p class="descricao">
-              Amanhã é o grande dia do lançamento do documentário “Mulheres
-              Amazônidas: tecelãs dos rios” e dos livros “Invencionices
-              floresteiras” e “En-cantações de um devir-mulher amazônida”!!!
-            </p>
-            <a
-              href="https://www.instagram.com/p/DO_ipPoCaFF/?igsh=M2o5aGNvaHlyZnpq&img_index=1"
-              class="btn-slide"
-              >Saiba Mais</a
-            >
-          </div>
+    <!-- Grid de Destaques - Opção 1 Aperfeiçoada -->
+    <section class="grid-destaques opcao1-melhorada">
+      <!-- Destaque Principal -->
+      <div class="destaque-principal">
+        <div class="imagem-container">
+          <img src="./assets/images/Projetos/Evento25-09.jpg" alt="Lançamento de Obras">
+          <div class="gradient-overlay"></div>
         </div>
-        <div class="carrossel-item fundo2">
-          <div class="conteudo-slide2">
-            <h2 class="titulo">Obra Literária</h2>
-            <p class="descricao">
-              https://www.instagram.com/p/DO_ipPoCaFF/?igsh=M2o5aGNvaHlyZnpq&img_index=1
-            </p>
-            <a
-              href="https://www.instagram.com/p/DO_ipPoCaFF/?igsh=M2o5aGNvaHlyZnpq&img_index=2"
-              class="btn-slide"
-              >Ver Eventos</a
-            >
+        <div class="conteudo-principal">
+          <span class="badge evento">DIVULGAÇÃO</span>
+          <h1>Lançamento de Obra Infanto Juvenil</h1>
+          <p class="descricao">Amanhã é o grande dia do lançamento do documentário "Mulheres Amazônidas: tecelãs dos rios" e dos livros "Invencionices floresteiras" e "En-cantações de um devir-mulher amazônida"!</p>
+          <div class="meta-info">
+            <span class="data">📅 26 de Setembro 2024</span>
+            <span class="local">📍 UEA - Campus Central</span>
           </div>
-        </div>
-        <div class="carrossel-item fundo3">
-          <div class="conteudo-slide3">
-            <h2 class="titulo">Documentário</h2>
-            <p class="descricao">
-              Os possíveis das vidas tecidas com esse projeto se entremeiam ao
-              grupo de pesquisa Vidar em In-Tensões (UEA)
-            </p>
-            <a
-              href="https://www.instagram.com/p/DO_ipPoCaFF/?igsh=M2o5aGNvaHlyZnpq&img_index=3"
-              class="btn-slide"
-              >Explorar</a
-            >
+          <div class="botoes-acao">
+            <a href="#" class="btn btn-primario">Participar do Evento</a>
+            <a href="#" class="btn btn-secundario">Saiba Mais</a>
           </div>
         </div>
       </div>
-
-      <button class="carrossel-seta anterior">&#10094;</button>
-      <button class="carrossel-seta proximo">&#10095;</button>
-
-      <div class="carrossel-indicadores">
-        <span class="carrossel-indicador ativo"></span>
-        <span class="carrossel-indicador"></span>
-        <span class="carrossel-indicador"></span>
+      
+      <!-- Destaques Secundários -->
+      <div class="destaques-laterais">
+        <div class="cabecalho-lateral">
+          <h3>Últimas Atualizações</h3>
+          <span class="contador">3 novas</span>
+        </div>
+        
+        <article class="card-atualizacao">
+          <div class="icone-tipo">📄</div>
+          <div class="conteudo-atualizacao">
+            <span class="categoria publicacao">Publicação</span>
+            <h4>Novo Artigo Científico Publicado</h4>
+            <p>Educação em Ciências, Artes e Ecofeminismo no Antropoceno</p>
+            <span class="tempo">Há 2 dias</span>
+          </div>
+        </article>
+        
+        <article class="card-atualizacao">
+          <div class="icone-tipo">🔬</div>
+          <div class="conteudo-atualizacao">
+            <span class="categoria projeto">Projeto</span>
+            <h4>Pesquisa de Campo Iniciada</h4>
+            <p>Estudo sobre comunidades tradicionais amazônicas</p>
+            <span class="tempo">Há 5 dias</span>
+          </div>
+        </article>
+        
+        <article class="card-atualizacao">
+          <div class="icone-tipo">🎓</div>
+          <div class="conteudo-atualizacao">
+            <span class="categoria evento">Evento</span>
+            <h4>Palestra na Semana Acadêmica</h4>
+            <p>Participação especial no evento da UEA</p>
+            <span class="tempo">Há 1 semana</span>
+          </div>
+        </article>
       </div>
     </section>
 

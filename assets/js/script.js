@@ -4,32 +4,34 @@
 const menuToggle = document.getElementById("menuToggle");
 const menu = document.getElementById("menu");
 
-menuToggle.addEventListener("click", () => {
-  menu.classList.toggle("show");
+if (menuToggle && menu) {
+  menuToggle.addEventListener("click", () => {
+    menu.classList.toggle("show");
 
-  // Animação do menu hambúrguer
-  const spans = menuToggle.querySelectorAll("span");
-  if (menu.classList.contains("show")) {
-    spans[0].style.transform = "rotate(45deg) translate(5px, 5px)";
-    spans[1].style.opacity = "0";
-    spans[2].style.transform = "rotate(-45deg) translate(7px, -6px)";
-  } else {
-    spans[0].style.transform = "none";
-    spans[1].style.opacity = "1";
-    spans[2].style.transform = "none";
-  }
-});
-
-// Fechar menu ao clicar em um item (mobile)
-document.querySelectorAll("#menu a").forEach((item) => {
-  item.addEventListener("click", () => {
-    menu.classList.remove("show");
+    // Animação do menu hambúrguer
     const spans = menuToggle.querySelectorAll("span");
-    spans[0].style.transform = "none";
-    spans[1].style.opacity = "1";
-    spans[2].style.transform = "none";
+    if (menu.classList.contains("show")) {
+      spans[0].style.transform = "rotate(45deg) translate(5px, 5px)";
+      spans[1].style.opacity = "0";
+      spans[2].style.transform = "rotate(-45deg) translate(7px, -6px)";
+    } else {
+      spans[0].style.transform = "none";
+      spans[1].style.opacity = "1";
+      spans[2].style.transform = "none";
+    }
   });
-});
+
+  // Fechar menu ao clicar em um item (mobile)
+  document.querySelectorAll("#menu a").forEach((item) => {
+    item.addEventListener("click", () => {
+      menu.classList.remove("show");
+      const spans = menuToggle.querySelectorAll("span");
+      spans[0].style.transform = "none";
+      spans[1].style.opacity = "1";
+      spans[2].style.transform = "none";
+    });
+  });
+}
 
 // =======================
 // Newsletter
@@ -76,132 +78,72 @@ document.addEventListener("DOMContentLoaded", () => {
   const yearElement = document.querySelector("footer p:last-child");
   if (yearElement) {
     const currentYear = new Date().getFullYear();
-    yearElement.textContent = yearElement.textContent.replace(/\d{4}/, currentYear);
-  }
-});
-
-// =======================
-// Carrossel de Destaque
-// =======================
-document.addEventListener("DOMContentLoaded", () => {
-  const carrossel = document.querySelector(".carrossel");
-  if (!carrossel) return;
-
-  const items = document.querySelectorAll(".carrossel-item");
-  const setaAnterior = document.querySelector(".carrossel-seta.anterior");
-  const setaProximo = document.querySelector(".carrossel-seta.proximo");
-  const indicadores = document.querySelectorAll(".carrossel-indicador");
-
-  let indiceAtual = 0;
-  const totalItems = items.length;
-  let intervalo = null;
-
-  // Atualiza o carrossel
-  function atualizarCarrossel() {
-    carrossel.style.transform = `translateX(-${indiceAtual * 100}%)`;
-    indicadores.forEach((indicador, index) =>
-      indicador.classList.toggle("ativo", index === indiceAtual)
+    yearElement.textContent = yearElement.textContent.replace(
+      /\d{4}/,
+      currentYear
     );
   }
-
-  function proximoSlide() {
-    indiceAtual = (indiceAtual + 1) % totalItems;
-    atualizarCarrossel();
-    reiniciarAutoPlay();
-  }
-
-  function slideAnterior() {
-    indiceAtual = (indiceAtual - 1 + totalItems) % totalItems;
-    atualizarCarrossel();
-    reiniciarAutoPlay();
-  }
-
-  function iniciarAutoPlay() {
-    intervalo = setInterval(proximoSlide, 5000);
-  }
-
-  function reiniciarAutoPlay() {
-    clearInterval(intervalo);
-    iniciarAutoPlay();
-  }
-
-  // Navegação manual pelas setas
-  setaProximo?.addEventListener("click", proximoSlide);
-  setaAnterior?.addEventListener("click", slideAnterior);
-
-  // Navegação pelos indicadores
-  indicadores.forEach((indicador, index) => {
-    indicador.addEventListener("click", () => {
-      indiceAtual = index;
-      atualizarCarrossel();
-      reiniciarAutoPlay();
-    });
-  });
-
-  // Teclado
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight") proximoSlide();
-    if (e.key === "ArrowLeft") slideAnterior();
-  });
-
-  // Pausar autoplay ao passar mouse
-  carrossel.addEventListener("mouseenter", () => clearInterval(intervalo));
-  carrossel.addEventListener("mouseleave", iniciarAutoPlay);
-
-  // Swipe no mobile
-  let touchStartX = 0;
-  let touchEndX = 0;
-
-  carrossel.addEventListener("touchstart", (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-  });
-
-  carrossel.addEventListener("touchend", (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    const swipeDist = touchStartX - touchEndX;
-
-    if (swipeDist > 50) proximoSlide();
-    if (swipeDist < -50) slideAnterior();
-  });
-
-  // Ajustar altura do carrossel baseado na imagem
-  function ajustarAlturaCarrossel() {
-    const carrosselContainer = document.querySelector(".carrossel-container");
-    const img = items[indiceAtual].querySelector("img");
-
-    if (img && img.complete) {
-      carrosselContainer.style.height = img.offsetHeight + "px";
-    } else if (img) {
-      img.addEventListener("load", () => {
-        carrosselContainer.style.height = img.offsetHeight + "px";
-      });
-    }
-  }
-
-  window.addEventListener("resize", ajustarAlturaCarrossel);
-
-  // Inicialização
-  atualizarCarrossel();
-  iniciarAutoPlay();
-  ajustarAlturaCarrossel();
 });
 
-// =======================
-// Animação da Timeline
-// =======================
-function animateTimeline() {
-  const timelineItems = document.querySelectorAll(".timeline-item");
+// =========================================================
+// SLIDESHOW AUTOMÁTICO (DESTAQUE PRINCIPAL)
+// =========================================================
+function iniciarSlideshow() {
+  const slides = document.querySelectorAll(".slide-bg");
+  if (slides.length === 0) return;
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add("visible");
-      });
-    },
-    { threshold: 0.3 }
-  );
+  let currentSlide = 0;
 
-  timelineItems.forEach((item) => observer.observe(item));
+  function mudarSlide() {
+    slides[currentSlide].classList.remove("active");
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add("active");
+  }
+
+  setInterval(mudarSlide, 4000);
 }
 
-document.addEventListener("DOMContentLoaded", animateTimeline);
+// =========================================================
+// ANIMAÇÕES DA PÁGINA SOBRE
+// =========================================================
+function observarElementos() {
+  const elementos = document.querySelectorAll(
+    '.timeline-item, .linha-card, .pilar-card, .parceiro-logo'
+  );
+
+  if (elementos.length === 0) return;
+
+  const observador = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        
+        // Delay individual para os itens da timeline
+        if (entry.target.classList.contains('timeline-item')) {
+          const index = Array.from(entry.target.parentElement.children).indexOf(entry.target);
+          entry.target.style.transitionDelay = `${index * 0.2}s`;
+        }
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  elementos.forEach(elemento => {
+    observador.observe(elemento);
+  });
+}
+
+// =======================
+// INICIALIZAÇÃO GERAL
+// =======================
+document.addEventListener('DOMContentLoaded', function() {
+  // Slideshow do destaque principal
+  iniciarSlideshow();
+  
+  // Animações da página sobre
+  observarElementos();
+  
+  // Atualizar ano do rodapé (já está sendo chamado acima)
+});

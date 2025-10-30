@@ -54,18 +54,38 @@
       </div>
     </header>
 
-    <!-- Grid de Destaques - Opção 1 Aperfeiçoada -->
-    <section class="grid-destaques opcao1-melhorada">
-      <!-- Destaque Principal -->
+    <!-- Destaque Principal - Ocupa toda a largura -->
+    <section class="destaque-principal-section">
       <div class="destaque-principal">
         <div class="imagem-container">
-          <img src="./assets/images/Projetos/Evento25-09.jpg" alt="Lançamento de Obras">
+          <div
+            class="slide-bg active"
+            style="
+              background-image: url('./assets/images/Projetos/Evento25-09.jpg');
+            "
+          ></div>
+          <div
+            class="slide-bg"
+            style="
+              background-image: url('./assets/images/Projetos/2evento25-09.jpg');
+            "
+          ></div>
+          <div
+            class="slide-bg"
+            style="
+              background-image: url('./assets/images/Projetos/1evento25-09.jpg');
+            "
+          ></div>
           <div class="gradient-overlay"></div>
         </div>
         <div class="conteudo-principal">
-          <span class="badge evento">DIVULGAÇÃO</span>
+          <span class="badge evento">Evento em Destaque</span>
           <h1>Lançamento de Obra Infanto Juvenil</h1>
-          <p class="descricao">Amanhã é o grande dia do lançamento do documentário "Mulheres Amazônidas: tecelãs dos rios" e dos livros "Invencionices floresteiras" e "En-cantações de um devir-mulher amazônida"!</p>
+          <p class="descricao">
+            Amanhã é o grande dia do lançamento dos livros "Invencionices
+            floresteiras" e "En-cantações de um devir-mulher amazônida" e do documentário "Mulheres
+            Amazônidas: tecelãs dos rios"!
+          </p>
           <div class="meta-info">
             <span class="data">📅 26 de Setembro 2024</span>
             <span class="local">📍 UEA - Campus Central</span>
@@ -76,43 +96,62 @@
           </div>
         </div>
       </div>
-      
-      <!-- Destaques Secundários -->
-      <div class="destaques-laterais">
+    </section>
+
+    <!-- Seção de Atualizações - Cards clicáveis -->
+    <section class="atualizacoes-section">
+      <div class="container-atualizacoes">
         <div class="cabecalho-lateral">
-          <h3>Últimas Atualizações</h3>
-          <span class="contador">3 novas</span>
+          <h3>Notícias</h3>
         </div>
-        
-        <article class="card-atualizacao">
-          <div class="icone-tipo">📄</div>
-          <div class="conteudo-atualizacao">
-            <span class="categoria publicacao">Publicação</span>
-            <h4>Novo Artigo Científico Publicado</h4>
-            <p>Educação em Ciências, Artes e Ecofeminismo no Antropoceno</p>
-            <span class="tempo">Há 2 dias</span>
-          </div>
-        </article>
-        
-        <article class="card-atualizacao">
-          <div class="icone-tipo">🔬</div>
-          <div class="conteudo-atualizacao">
-            <span class="categoria projeto">Projeto</span>
-            <h4>Pesquisa de Campo Iniciada</h4>
-            <p>Estudo sobre comunidades tradicionais amazônicas</p>
-            <span class="tempo">Há 5 dias</span>
-          </div>
-        </article>
-        
-        <article class="card-atualizacao">
-          <div class="icone-tipo">🎓</div>
-          <div class="conteudo-atualizacao">
-            <span class="categoria evento">Evento</span>
-            <h4>Palestra na Semana Acadêmica</h4>
-            <p>Participação especial no evento da UEA</p>
-            <span class="tempo">Há 1 semana</span>
-          </div>
-        </article>
+
+        <div class="grid-atualizacoes">
+          <a
+            href="https://www.periodicoscientificos.ufmt.br/ojs/index.php/reamec/article/view/19518"
+            target="_blank"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <article class="card-atualizacao">
+              <div class="icone-tipo">📄</div>
+              <div class="conteudo-atualizacao">
+                <span class="categoria publicacao">Publicação</span>
+                <h4>Novo Artigo Científico Publicado</h4>
+                <p>Educação em Ciências, Artes e Ecofeminismo no Antropoceno</p>
+                <span class="tempo">Há 2 dias</span>
+              </div>
+            </article>
+          </a>
+
+          <a
+            href="../vidar-site-beta/projetos.html"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <article class="card-atualizacao">
+              <div class="icone-tipo">🔬</div>
+              <div class="conteudo-atualizacao">
+                <span class="categoria projeto">Projeto</span>
+                <h4>Pesquisa de Campo Iniciada</h4>
+                <p>Estudo sobre comunidades tradicionais amazônicas</p>
+                <span class="tempo">Há 5 dias</span>
+              </div>
+            </article>
+          </a>
+
+          <a
+            href="../vidar-site-beta/eventos.html"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <article class="card-atualizacao">
+              <div class="icone-tipo">🎓</div>
+              <div class="conteudo-atualizacao">
+                <span class="categoria evento">Evento</span>
+                <h4>Palestra na Semana Acadêmica</h4>
+                <p>Participação especial no evento da UEA</p>
+                <span class="tempo">Há 1 semana</span>
+              </div>
+            </article>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -128,78 +167,6 @@
       <span class="credito-foto">
         Foto: Marcelo Buainain (Divulgação/Itaú Cultural)
       </span>
-    </section>
-
-    <!-- Seção das Fundadoras -->
-    <section id="fundadoras" class="ultimas-noticias">
-      <h2 class="titulo-secao">Nossas Fundadoras</h2>
-      <div class="grid-noticias">
-        <article class="card-noticia">
-          <img src="./assets/images/LattesMonicaCosta.gif" alt="Mônica Costa" />
-          <div class="conteudo">
-            <h3>Mônica Costa</h3>
-            <p>
-              Co-fundadora do grupo Vidar em In-Tensões, especialista em estudos
-              amazônicos e pesquisadora com vasta experiência em tensões sociais
-              e ambientais.
-            </p>
-            <a
-              href="https://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4291487J6"
-              target="_blank"
-              class="leia-mais"
-              rel="noopener noreferrer"
-            >
-              Ver Currículo Lattes
-            </a>
-          </div>
-        </article>
-
-        <article class="card-noticia">
-          <img
-            src="./assets/images/LattesMonicaAikawa.gif"
-            alt="Monica Aikawa"
-          />
-          <div class="conteudo">
-            <h3>Monica Aikawa</h3>
-            <p>
-              Co-fundadora do grupo, pesquisadora dedicada ao estudo de
-              epistemologias não-ocidentais e diálogo de saberes na Amazônia
-              contemporânea.
-            </p>
-            <a
-              href="https://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4455006D3"
-              target="_blank"
-              class="leia-mais"
-              rel="noopener noreferrer"
-            >
-              Ver Currículo Lattes
-            </a>
-          </div>
-        </article>
-
-        <article class="card-noticia">
-          <img
-            src="./assets/images/LattesCarolineBarroncas.gif"
-            alt="Caroline Barroncas"
-          />
-          <div class="conteudo">
-            <h3>Caroline Barroncas</h3>
-            <p>
-              Co-fundadora do grupo, especialista em justiça ambiental e
-              políticas públicas para a Amazônia, com foco em comunidades
-              tradicionais.
-            </p>
-            <a
-              href="https://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4716064E0"
-              target="_blank"
-              class="leia-mais"
-              rel="noopener noreferrer"
-            >
-              Ver Currículo Lattes
-            </a>
-          </div>
-        </article>
-      </div>
     </section>
 
     <!-- Lista de Leituras -->
